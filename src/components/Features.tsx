@@ -6,17 +6,20 @@ const Features = () => {
     {
       icon: Calendar,
       title: "Smart Scheduling",
-      description: "Automated calendar management with conflict detection and availability optimization."
+      description: "Automated calendar management with conflict detection and availability optimization.",
+      youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
       icon: CreditCard,
       title: "Secure Billing",
-      description: "Automated payments, invoicing, and financial reporting. Get paid on time, every time."
+      description: "Automated payments, invoicing, and financial reporting. Get paid on time, every time.",
+      youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
       icon: Users,
       title: "Client Management",
-      description: "Send invitations, track progress, and maintain detailed client profiles effortlessly."
+      description: "Send invitations, track progress, and maintain detailed client profiles effortlessly.",
+      youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     }
   ];
 
@@ -24,19 +27,26 @@ const Features = () => {
     {
       icon: Search,
       title: "Find & Book",
-      description: "Discover qualified coaches and instructors in your area. Book sessions instantly."
+      description: "Discover qualified coaches and instructors in your area. Book sessions instantly.",
+      youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
       icon: Bell,
       title: "Smart Notifications",
-      description: "Get reminders for upcoming sessions, schedule changes, and important updates."
+      description: "Get reminders for upcoming sessions, schedule changes, and important updates.",
+      youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
       icon: Shield,
       title: "Secure Payments",
-      description: "Pay safely with encrypted transactions and automatic receipt generation."
+      description: "Pay safely with encrypted transactions and automatic receipt generation.",
+      youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     }
   ];
+
+  const handleFeatureClick = (url: string) => {
+    window.open(url, '_blank');
+  };
 
   return (
     <section id="features" className="py-20 bg-white">
@@ -60,7 +70,11 @@ const Features = () => {
             </div>
             <div className="space-y-6">
               {providerFeatures.map((feature, index) => (
-                <div key={index} className="flex items-start space-x-4 p-4 rounded-lg hover:bg-green-50 transition-colors">
+                <div 
+                  key={index} 
+                  className="flex items-start space-x-4 p-4 rounded-lg hover:bg-green-50 transition-colors cursor-pointer transform hover:scale-105 duration-200"
+                  onClick={() => handleFeatureClick(feature.youtubeUrl)}
+                >
                   <div className="flex-shrink-0 w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
                     <feature.icon className="h-6 w-6 text-green-600" />
                   </div>
@@ -81,7 +95,11 @@ const Features = () => {
             </div>
             <div className="space-y-6">
               {consumerFeatures.map((feature, index) => (
-                <div key={index} className="flex items-start space-x-4 p-4 rounded-lg hover:bg-blue-50 transition-colors">
+                <div 
+                  key={index} 
+                  className="flex items-start space-x-4 p-4 rounded-lg hover:bg-blue-50 transition-colors cursor-pointer transform hover:scale-105 duration-200"
+                  onClick={() => handleFeatureClick(feature.youtubeUrl)}
+                >
                   <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                     <feature.icon className="h-6 w-6 text-blue-600" />
                   </div>
