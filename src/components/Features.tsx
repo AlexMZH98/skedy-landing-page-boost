@@ -1,25 +1,35 @@
 
 import { Calendar, CreditCard, Users, Search, Bell, Shield } from "lucide-react";
+import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const Features = () => {
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [currentVideoUrl, setCurrentVideoUrl] = useState("");
+
   const providerFeatures = [
     {
       icon: Calendar,
       title: "Smart Scheduling",
       description: "Automated calendar management with conflict detection and availability optimization.",
-      youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+      youtubeUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
     },
     {
       icon: CreditCard,
       title: "Secure Billing",
       description: "Automated payments, invoicing, and financial reporting. Get paid on time, every time.",
-      youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+      youtubeUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
     },
     {
       icon: Users,
       title: "Client Management",
       description: "Send invitations, track progress, and maintain detailed client profiles effortlessly.",
-      youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+      youtubeUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
     }
   ];
 
@@ -28,24 +38,25 @@ const Features = () => {
       icon: Search,
       title: "Find & Book",
       description: "Discover qualified coaches and instructors in your area. Book sessions instantly.",
-      youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+      youtubeUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
     },
     {
       icon: Bell,
       title: "Smart Notifications",
       description: "Get reminders for upcoming sessions, schedule changes, and important updates.",
-      youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+      youtubeUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
     },
     {
       icon: Shield,
       title: "Secure Payments",
       description: "Pay safely with encrypted transactions and automatic receipt generation.",
-      youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+      youtubeUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
     }
   ];
 
   const handleFeatureClick = (url: string) => {
-    window.open(url, '_blank', 'width=800,height=600,scrollbars=yes,resizable=yes');
+    setCurrentVideoUrl(url);
+    setIsVideoModalOpen(true);
   };
 
   return (
@@ -113,6 +124,24 @@ const Features = () => {
           </div>
         </div>
       </div>
+
+      {/* Video Modal */}
+      <Dialog open={isVideoModalOpen} onOpenChange={setIsVideoModalOpen}>
+        <DialogContent className="max-w-4xl w-full p-0 bg-transparent border-none shadow-none">
+          <DialogHeader className="sr-only">
+            <DialogTitle>Feature Demo Video</DialogTitle>
+          </DialogHeader>
+          <div className="relative w-full aspect-video">
+            <iframe
+              src={currentVideoUrl}
+              title="Feature Demo Video"
+              className="w-full h-full rounded-lg"
+              allowFullScreen
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            />
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
