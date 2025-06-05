@@ -45,7 +45,7 @@ const Features = () => {
   ];
 
   const handleFeatureClick = (url: string) => {
-    window.open(url, '_blank');
+    window.open(url, '_blank', 'width=800,height=600,scrollbars=yes,resizable=yes');
   };
 
   return (
