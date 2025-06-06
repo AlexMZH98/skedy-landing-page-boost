@@ -2,8 +2,29 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, Calendar, CreditCard, Users } from "lucide-react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    if (searchQuery.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+    }
+  };
+
+  const handleTagClick = (tag: string) => {
+    navigate(`/search?q=${encodeURIComponent(tag)}`);
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   return (
     <section className="bg-gradient-to-br from-violet-500 via-purple-500 to-blue-500 relative overflow-hidden">
       {/* Animated background elements */}
@@ -37,15 +58,25 @@ const Hero = () => {
                       <Input 
                         placeholder="Sport, activity, or skill..." 
                         className="pl-10"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        onKeyPress={handleKeyPress}
                       />
                     </div>
-                    <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 shadow-lg">
+                    <Button 
+                      className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 shadow-lg"
+                      onClick={handleSearch}
+                    >
                       Search
                     </Button>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {["Tennis", "Piano", "Math Tutoring", "Swimming", "Guitar"].map((tag) => (
-                      <span key={tag} className="px-3 py-1 bg-gradient-to-r from-purple-100 to-blue-100 text-purple-700 rounded-full text-sm hover:from-purple-200 hover:to-blue-200 cursor-pointer transition-all duration-200 transform hover:scale-105">
+                      <span 
+                        key={tag} 
+                        className="px-3 py-1 bg-gradient-to-r from-purple-100 to-blue-100 text-purple-700 rounded-full text-sm hover:from-purple-200 hover:to-blue-200 cursor-pointer transition-all duration-200 transform hover:scale-105"
+                        onClick={() => handleTagClick(tag)}
+                      >
                         {tag}
                       </span>
                     ))}
