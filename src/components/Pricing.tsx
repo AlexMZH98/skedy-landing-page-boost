@@ -18,10 +18,10 @@ const Pricing = () => {
 
   const coachPlans = [
     {
-      name: t('pricing.features.advance'),
+      name: "Advance",
       price: "$25",
       period: t('pricing.perMonth'),
-      description: "",
+      description: t('pricing.mostPopular'),
       features: [
         { text: t('pricing.features.unlimitedClients'), included: true },
         { text: t('pricing.features.advanceScheduling'), included: true },
@@ -82,48 +82,50 @@ const Pricing = () => {
         </div>
 
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-4 gap-8">
+          <div className="grid lg:grid-cols-12 gap-8">
             {/* Parents & Students */}
-            <div className="lg:col-span-1">
-              <div className="border-2 border-blue-400 rounded-lg bg-white p-6 h-full">
+            <div className="lg:col-span-3">
+              <div className="border-2 border-blue-500 rounded-xl bg-white p-8 h-full shadow-lg">
                 <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-blue-600 mb-4">{t('pricing.parentsStudents')}</h3>
-                  <div className="mb-4">
-                    <span className="text-4xl font-bold text-gray-900">$0</span>
-                    <span className="text-gray-600 text-sm block">{t('pricing.forever')}</span>
+                  <h3 className="text-2xl font-bold text-blue-600 mb-2">{t('pricing.parentsStudents')}</h3>
+                  <div className="mb-6">
+                    <span className="text-5xl font-bold text-gray-900">$0</span>
+                    <span className="text-gray-600 text-sm block mt-1">{t('pricing.forever')}</span>
                   </div>
                 </div>
 
-                <div className="space-y-3 mb-8">
+                <div className="space-y-4 mb-8">
                   {parentFeatures.map((feature, index) => (
-                    <div key={index} className="flex items-center space-x-3">
-                      <Check className="h-4 w-4 text-green-600 flex-shrink-0" />
-                      <span className="text-sm text-gray-900">{feature}</span>
+                    <div key={index} className="flex items-start space-x-3">
+                      <Check className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-700 leading-relaxed">{feature}</span>
                     </div>
                   ))}
                 </div>
 
-                <Button className="w-full bg-blue-600 hover:bg-blue-700">
+                <Button className="w-full bg-blue-600 hover:bg-blue-700 py-3 text-base font-semibold">
                   {t('pricing.joinNow')}
                 </Button>
               </div>
             </div>
 
-            {/* Gap between Parents & Students and Coaches */}
-            <div className="lg:col-span-1"></div>
+            {/* Large gap between sections */}
+            <div className="lg:col-span-2"></div>
 
             {/* Coaches or Instructors */}
-            <div className="lg:col-span-1">
-              <div className="space-y-6">
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-teal-600 mb-6">{t('pricing.coachesInstructors')}</h3>
-                </div>
+            <div className="lg:col-span-4">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-teal-600">{t('pricing.coachesInstructors')}</h3>
+              </div>
 
+              <div className="space-y-6">
                 {coachPlans.map((plan, index) => (
-                  <div key={index} className={`border-2 rounded-lg p-6 relative bg-white ${plan.popular ? 'border-teal-400' : 'border-gray-200'}`}>
+                  <div key={index} className={`border-2 rounded-xl p-8 relative bg-white shadow-lg ${
+                    plan.popular ? 'border-teal-500 ring-4 ring-teal-100' : 'border-gray-300'
+                  }`}>
                     {plan.popular && (
-                      <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                        <span className="bg-teal-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span className="bg-teal-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
                           {t('pricing.mostPopular')}
                         </span>
                       </div>
@@ -132,20 +134,22 @@ const Pricing = () => {
                     <div className="text-center mb-6">
                       <h4 className="text-xl font-bold text-gray-900 mb-2">{plan.name}</h4>
                       <div className="mb-2">
-                        <span className="text-3xl font-bold text-gray-900">{plan.price}</span>
-                        <span className="text-gray-600 text-sm block">/{plan.period}</span>
+                        <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
+                        <span className="text-gray-600 text-sm block mt-1">/{plan.period}</span>
                       </div>
                     </div>
 
-                    <div className="space-y-2 mb-6">
+                    <div className="space-y-3 mb-8">
                       {plan.features.map((feature, featureIndex) => (
-                        <div key={featureIndex} className="flex items-center space-x-2">
+                        <div key={featureIndex} className="flex items-start space-x-3">
                           {feature.included ? (
-                            <Check className="h-4 w-4 text-green-600 flex-shrink-0" />
+                            <Check className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
                           ) : (
-                            <X className="h-4 w-4 text-gray-400 flex-shrink-0" />
+                            <X className="h-5 w-5 text-gray-400 flex-shrink-0 mt-0.5" />
                           )}
-                          <span className={`text-sm ${feature.included ? 'text-gray-900' : 'text-gray-400'}`}>
+                          <span className={`text-sm leading-relaxed ${
+                            feature.included ? 'text-gray-700' : 'text-gray-400'
+                          }`}>
                             {feature.text}
                           </span>
                         </div>
@@ -153,7 +157,7 @@ const Pricing = () => {
                     </div>
 
                     <Button 
-                      className={`w-full ${
+                      className={`w-full py-3 text-base font-semibold ${
                         plan.popular 
                           ? 'bg-teal-600 hover:bg-teal-700' 
                           : 'bg-gray-900 hover:bg-gray-800'
@@ -167,26 +171,26 @@ const Pricing = () => {
             </div>
 
             {/* Pro */}
-            <div className="lg:col-span-1">
-              <div className="border-2 border-gray-400 rounded-lg bg-white p-6 h-full">
+            <div className="lg:col-span-3">
+              <div className="border-2 border-gray-500 rounded-xl bg-white p-8 h-full shadow-lg">
                 <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">{t('pricing.pro')}</h3>
-                  <div className="mb-4">
-                    <span className="text-4xl font-bold text-gray-900">$35</span>
-                    <span className="text-gray-600 text-sm block">/{t('pricing.perMonth')}</span>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{t('pricing.pro')}</h3>
+                  <div className="mb-6">
+                    <span className="text-5xl font-bold text-gray-900">$35</span>
+                    <span className="text-gray-600 text-sm block mt-1">/{t('pricing.perMonth')}</span>
                   </div>
                 </div>
 
-                <div className="space-y-3 mb-8">
+                <div className="space-y-4 mb-8">
                   {proFeatures.map((feature, index) => (
-                    <div key={index} className="flex items-center space-x-3">
-                      <Check className="h-4 w-4 text-green-600 flex-shrink-0" />
-                      <span className="text-sm text-gray-900">{feature}</span>
+                    <div key={index} className="flex items-start space-x-3">
+                      <Check className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-700 leading-relaxed">{feature}</span>
                     </div>
                   ))}
                 </div>
 
-                <Button className="w-full bg-gray-900 hover:bg-gray-800">
+                <Button className="w-full bg-gray-900 hover:bg-gray-800 py-3 text-base font-semibold">
                   {t('pricing.joinAsPro')}
                 </Button>
               </div>
@@ -194,8 +198,8 @@ const Pricing = () => {
           </div>
         </div>
 
-        <div className="text-center mt-12">
-          <p className="text-gray-600">
+        <div className="text-center mt-16">
+          <p className="text-gray-600 text-lg">
             {t('pricing.contactSales')}
           </p>
         </div>
