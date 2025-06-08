@@ -15,7 +15,7 @@ const Index = () => {
       <Header />
       <Hero />
       
-      <AnimatedSection animation="slide-in-up" delay={100}>
+      <AnimatedSection animation="bounce-in" delay={100}>
         <Features />
       </AnimatedSection>
       
@@ -23,7 +23,7 @@ const Index = () => {
         <Statistics />
       </AnimatedSection>
       
-      <AnimatedSection animation="fade-slide-in" delay={150}>
+      <AnimatedSection animation="zoom-in" delay={150}>
         <Pricing />
       </AnimatedSection>
       
