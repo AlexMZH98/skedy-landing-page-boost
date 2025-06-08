@@ -3,13 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useTranslation } from "@/hooks/useTranslation";
-import LanguageSwitcher from "./LanguageSwitcher";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
-  const { t } = useTranslation();
 
   const handleLogoClick = () => {
     navigate('/');
@@ -61,33 +58,32 @@ const Header = () => {
               onClick={() => handleMenuItemClick('#features')}
               className="text-gray-600 hover:text-blue-600 transition-colors"
             >
-              {t('header.features')}
+              Features
             </button>
             <button 
               onClick={() => handleMenuItemClick('#pricing')}
               className="text-gray-600 hover:text-blue-600 transition-colors"
             >
-              {t('header.pricing')}
+              Pricing
             </button>
             <button 
               onClick={() => handleMenuItemClick('#team')}
               className="text-gray-600 hover:text-blue-600 transition-colors"
             >
-              {t('header.team')}
+              Team
             </button>
             <button 
               onClick={() => handleMenuItemClick('#terms')}
               className="text-gray-600 hover:text-blue-600 transition-colors"
             >
-              {t('header.terms')}
+              Terms
             </button>
           </nav>
 
-          {/* Desktop Auth Buttons and Language Switcher */}
+          {/* Desktop Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <LanguageSwitcher />
-            <Button variant="ghost" className="text-gray-600">{t('header.login')}</Button>
-            <Button className="bg-blue-600 hover:bg-blue-700">{t('header.signUp')}</Button>
+            <Button variant="ghost" className="text-gray-600">Login</Button>
+            <Button className="bg-blue-600 hover:bg-blue-700">Sign Up</Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -107,30 +103,29 @@ const Header = () => {
                 onClick={() => handleMenuItemClick('#features')}
                 className="text-gray-600 hover:text-blue-600 transition-colors text-left"
               >
-                {t('header.features')}
+                Features
               </button>
               <button 
                 onClick={() => handleMenuItemClick('#pricing')}
                 className="text-gray-600 hover:text-blue-600 transition-colors text-left"
               >
-                {t('header.pricing')}
+                Pricing
               </button>
               <button 
                 onClick={() => handleMenuItemClick('#team')}
                 className="text-gray-600 hover:text-blue-600 transition-colors text-left"
               >
-                {t('header.team')}
+                Team
               </button>
               <button 
                 onClick={() => handleMenuItemClick('#terms')}
                 className="text-gray-600 hover:text-blue-600 transition-colors text-left"
               >
-                {t('header.terms')}
+                Terms
               </button>
               <div className="flex flex-col space-y-2 pt-4">
-                <LanguageSwitcher />
-                <Button variant="ghost" className="text-gray-600">{t('header.login')}</Button>
-                <Button className="bg-blue-600 hover:bg-blue-700">{t('header.signUp')}</Button>
+                <Button variant="ghost" className="text-gray-600">Login</Button>
+                <Button className="bg-blue-600 hover:bg-blue-700">Sign Up</Button>
               </div>
             </nav>
           </div>
