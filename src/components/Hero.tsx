@@ -1,9 +1,9 @@
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, Calendar, CreditCard, Users } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const Hero = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -12,6 +12,7 @@ const Hero = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const searchRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
 
   // Close suggestions when clicking outside
   useEffect(() => {
@@ -122,23 +123,23 @@ const Hero = () => {
             <div className="space-y-8">
               <div className="space-y-4">
                 <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-                  Find Your Perfect
-                  <span className="text-yellow-300 block">Coach or Instructor</span>
+                  {t('hero.title')}
+                  <span className="text-yellow-300 block">{t('hero.titleHighlight')}</span>
                 </h1>
                 <p className="text-xl text-blue-100">
-                  Discover, book, and pay for sports lessons, tutoring, and activities in your area.
+                  {t('hero.subtitle')}
                 </p>
               </div>
 
               {/* Search Bar */}
               <div className="bg-white/95 backdrop-blur-sm rounded-lg shadow-xl p-6">
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-gray-900">Search for Coaches</h3>
+                  <h3 className="text-lg font-semibold text-gray-900">{t('hero.searchTitle')}</h3>
                   <div className="flex gap-2">
                     <div className="flex-1 relative" ref={searchRef}>
                       <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                       <Input 
-                        placeholder="Sport, activity, or skill..." 
+                        placeholder={t('hero.searchPlaceholder')}
                         className="pl-10"
                         value={searchQuery}
                         onChange={handleInputChange}
@@ -173,7 +174,7 @@ const Hero = () => {
                       className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 shadow-lg"
                       onClick={() => handleSearch()}
                     >
-                      Search
+                      {t('hero.searchButton')}
                     </Button>
                   </div>
                   <div className="flex flex-wrap gap-2">
@@ -196,34 +197,34 @@ const Hero = () => {
               <div className="space-y-6">
                 <div className="text-center">
                   <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                    Are You a Coach or Instructor?
+                    {t('hero.providerTitle')}
                   </h2>
                   <p className="text-gray-600 mb-6">
-                    Join thousands of providers who use Skedy to manage their business and grow their client base.
+                    {t('hero.providerSubtitle')}
                   </p>
                 </div>
 
                 <div className="space-y-4">
                   <div className="flex items-center space-x-3">
                     <Calendar className="h-6 w-6 text-green-600" />
-                    <span className="text-gray-700">Easy scheduling & calendar management</span>
+                    <span className="text-gray-700">{t('hero.providerFeature1')}</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <CreditCard className="h-6 w-6 text-green-600" />
-                    <span className="text-gray-700">Secure payments & billing automation</span>
+                    <span className="text-gray-700">{t('hero.providerFeature2')}</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Users className="h-6 w-6 text-green-600" />
-                    <span className="text-gray-700">Client management & invitations</span>
+                    <span className="text-gray-700">{t('hero.providerFeature3')}</span>
                   </div>
                 </div>
 
                 <Button className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-lg py-3 shadow-lg transform hover:scale-105 transition-all duration-200">
-                  Join as a Provider
+                  {t('hero.joinProvider')}
                 </Button>
 
                 <p className="text-sm text-gray-500 text-center">
-                  Free to start • No setup fees • Cancel anytime
+                  {t('hero.freeToStart')}
                 </p>
               </div>
             </div>

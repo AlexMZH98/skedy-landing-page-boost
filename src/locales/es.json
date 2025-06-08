@@ -1,0 +1,65 @@
+
+{
+  "header": {
+    "features": "Características",
+    "pricing": "Precios",
+    "team": "Equipo", 
+    "terms": "Términos",
+    "login": "Iniciar Sesión",
+    "signUp": "Registrarse"
+  },
+  "hero": {
+    "title": "Encuentra Tu",
+    "titleHighlight": "Entrenador o Instructor Perfecto",
+    "subtitle": "Descubre, reserva y paga por clases deportivas, tutorías y actividades en tu área.",
+    "searchTitle": "Buscar Entrenadores",
+    "searchPlaceholder": "Deporte, actividad o habilidad...",
+    "searchButton": "Buscar",
+    "providerTitle": "¿Eres Entrenador o Instructor?",
+    "providerSubtitle": "Únete a miles de proveedores que usan Skedy para gestionar su negocio y hacer crecer su base de clientes.",
+    "providerFeature1": "Programación fácil y gestión de calendario",
+    "providerFeature2": "Pagos seguros y facturación automatizada",
+    "providerFeature3": "Gestión de clientes e invitaciones",
+    "joinProvider": "Únete como Proveedor",
+    "freeToStart": "Gratis para empezar • Sin costos de configuración • Cancela en cualquier momento"
+  },
+  "pricing": {
+    "title": "Precios Simples y Transparentes",
+    "subtitle": "Elige el plan que funcione para tu negocio. Todos los planes incluyen pagos seguros y características básicas.",
+    "parentsStudents": "Padres y Estudiantes",
+    "coachesInstructors": "Entrenadores o Instructores",
+    "pro": "Pro",
+    "forever": "para siempre",
+    "perMonth": "por mes",
+    "mostPopular": "Más Popular",
+    "joinNow": "Únete Ahora",
+    "getStartedFree": "Comenzar Gratis",
+    "startAdvance": "Comenzar Avanzado",
+    "joinAsPro": "Únete como Pro",
+    "contactSales": "¿Necesitas una solución personalizada? Contacta a nuestro equipo de ventas",
+    "features": {
+      "bookSession": "Reservar sesión de clase",
+      "trackSessions": "Seguir sesiones",
+      "historyOfSessions": "Historial de sesiones",
+      "manageBills": "Gestionar facturas",
+      "manageClasses": "Gestionar Clases",
+      "writeReviews": "Escribir reseñas",
+      "makePayments": "Realizar pagos",
+      "upToClients": "Hasta 10 clientes",
+      "unlimitedClients": "Clientes ilimitados",
+      "basicScheduling": "Programación básica",
+      "advanceScheduling": "Programación avanzada",
+      "alertsReminders": "Alertas y Recordatorios",
+      "classManagement": "Gestión de clases",
+      "upToClasses": "Hasta 10 clases",
+      "finance": "Finanzas",
+      "payments": "Pagos",
+      "manualPayments": "Pagos Manuales",
+      "automaticPayments": "Pagos automáticos",
+      "publicProfile": "Perfil público",
+      "leadGeneration": "Generación de leads",
+      "playerProgress": "Gestión del Progreso del Jugador",
+      "unlimited": "Ilimitado"
+    }
+  }
+}
