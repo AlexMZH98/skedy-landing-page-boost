@@ -1,3 +1,4 @@
+
 import { Calendar, CreditCard, Users, Search, Bell, Shield, Play } from "lucide-react";
 import { useState } from "react";
 import {
@@ -92,7 +93,7 @@ const Features = () => {
                     <h4 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h4>
                     <p className="text-gray-600">{feature.description}</p>
                   </div>
-                  <div className="flex-shrink-0 w-10 h-10 bg-green-600 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  <div className="flex-shrink-0 w-10 h-10 bg-green-600 rounded-full flex items-center justify-center md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-200">
                     <Play className="h-5 w-5 text-white fill-white ml-0.5" />
                   </div>
                 </div>
@@ -120,7 +121,7 @@ const Features = () => {
                     <h4 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h4>
                     <p className="text-gray-600">{feature.description}</p>
                   </div>
-                  <div className="flex-shrink-0 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  <div className="flex-shrink-0 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-200">
                     <Play className="h-5 w-5 text-white fill-white ml-0.5" />
                   </div>
                 </div>
