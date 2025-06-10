@@ -1,5 +1,4 @@
-
-import { Calendar, CreditCard, Users, Search, Bell, Shield } from "lucide-react";
+import { Calendar, CreditCard, Users, Search, Bell, Shield, Play } from "lucide-react";
 import { useState } from "react";
 import {
   Dialog,
@@ -83,15 +82,18 @@ const Features = () => {
               {providerFeatures.map((feature, index) => (
                 <div 
                   key={index} 
-                  className="flex items-start space-x-4 p-4 rounded-lg hover:bg-green-50 transition-colors cursor-pointer transform hover:scale-105 duration-200"
+                  className="relative flex items-start space-x-4 p-4 rounded-lg hover:bg-green-50 transition-colors cursor-pointer transform hover:scale-105 duration-200 group"
                   onClick={() => handleFeatureClick(feature.youtubeUrl)}
                 >
                   <div className="flex-shrink-0 w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
                     <feature.icon className="h-6 w-6 text-green-600" />
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <h4 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h4>
                     <p className="text-gray-600">{feature.description}</p>
+                  </div>
+                  <div className="flex-shrink-0 w-10 h-10 bg-green-600 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    <Play className="h-5 w-5 text-white fill-white ml-0.5" />
                   </div>
                 </div>
               ))}
@@ -108,15 +110,18 @@ const Features = () => {
               {consumerFeatures.map((feature, index) => (
                 <div 
                   key={index} 
-                  className="flex items-start space-x-4 p-4 rounded-lg hover:bg-blue-50 transition-colors cursor-pointer transform hover:scale-105 duration-200"
+                  className="relative flex items-start space-x-4 p-4 rounded-lg hover:bg-blue-50 transition-colors cursor-pointer transform hover:scale-105 duration-200 group"
                   onClick={() => handleFeatureClick(feature.youtubeUrl)}
                 >
                   <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                     <feature.icon className="h-6 w-6 text-blue-600" />
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <h4 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h4>
                     <p className="text-gray-600">{feature.description}</p>
+                  </div>
+                  <div className="flex-shrink-0 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    <Play className="h-5 w-5 text-white fill-white ml-0.5" />
                   </div>
                 </div>
               ))}
