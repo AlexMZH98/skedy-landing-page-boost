@@ -38,13 +38,13 @@ const Team = () => {
   ];
 
   return (
-    <section id="team" className="py-20 bg-background">
+    <section id="team" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
             Meet Our Team
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             We're a passionate team of coaches, athletes, and tech enthusiasts building the future of sports instruction.
           </p>
         </div>
@@ -62,13 +62,13 @@ const Team = () => {
                   <div className="flex space-x-3 opacity-0 group-hover:opacity-100 transition-opacity">
                     <a 
                       href={member.linkedin} 
-                      className="p-2 bg-card rounded-full shadow-lg hover:bg-primary hover:text-primary-foreground transition-colors"
+                      className="p-2 bg-white rounded-full shadow-lg hover:bg-blue-600 hover:text-white transition-colors"
                     >
                       <Linkedin size={16} />
                     </a>
                     <a 
                       href={member.twitter} 
-                      className="p-2 bg-card rounded-full shadow-lg hover:bg-primary hover:text-primary-foreground transition-colors"
+                      className="p-2 bg-white rounded-full shadow-lg hover:bg-blue-400 hover:text-white transition-colors"
                     >
                       <Twitter size={16} />
                     </a>
@@ -76,9 +76,9 @@ const Team = () => {
                 </div>
               </div>
               
-              <h3 className="text-xl font-semibold text-foreground mb-1">{member.name}</h3>
-              <p className="text-primary font-medium mb-3">{member.role}</p>
-              <p className="text-muted-foreground text-sm leading-relaxed">{member.bio}</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-1">{member.name}</h3>
+              <p className="text-blue-600 font-medium mb-3">{member.role}</p>
+              <p className="text-gray-600 text-sm leading-relaxed">{member.bio}</p>
             </div>
           ))}
         </div>
