@@ -111,11 +111,11 @@ const CoachDetail = () => {
 
   if (!coach) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
         <Header />
         <div className="container mx-auto px-4 py-16">
           <div className="text-center">
-            <h1 className="text-2xl font-bold text-foreground mb-4">Coach not found</h1>
+            <h1 className="text-2xl font-bold text-gray-900 mb-4">Coach not found</h1>
             <Button onClick={handleBack} variant="outline">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Go Back
@@ -127,7 +127,7 @@ const CoachDetail = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
       <Header />
       
       <div className="container mx-auto px-4 py-8">
@@ -141,22 +141,22 @@ const CoachDetail = () => {
 
         {/* Coach Card - Large Version */}
         <div className="max-w-2xl mx-auto">
-          <Card className="shadow-xl border border-border bg-card/90 backdrop-blur-sm">
+          <Card className="shadow-xl border-0 bg-white/90 backdrop-blur-sm">
             <CardHeader className="pb-6">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-6">
-                  <Avatar className="h-24 w-24 ring-4 ring-background shadow-lg">
+                  <Avatar className="h-24 w-24 ring-4 ring-white shadow-lg">
                     <AvatarImage src={coach.profilePic} alt={coach.name} />
-                    <AvatarFallback className="bg-gradient-to-br from-primary to-primary/80 text-primary-foreground font-semibold text-xl">
+                    <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-500 text-white font-semibold text-xl">
                       {coach.name.split(' ').map(n => n[0]).join('')}
                     </AvatarFallback>
                   </Avatar>
                   <div className="flex-1">
-                    <CardTitle className="text-2xl text-card-foreground mb-2">{coach.name}</CardTitle>
-                    <p className="text-primary font-medium text-lg">{coach.activityType}</p>
+                    <CardTitle className="text-2xl text-gray-900 mb-2">{coach.name}</CardTitle>
+                    <p className="text-blue-600 font-medium text-lg">{coach.activityType}</p>
                     <div className="flex items-center space-x-2 mt-2">
                       <span className="text-yellow-500 text-lg">★</span>
-                      <span className="text-muted-foreground">{coach.rating} • {coach.experience}</span>
+                      <span className="text-gray-600">{coach.rating} • {coach.experience}</span>
                     </div>
                   </div>
                 </div>
@@ -181,7 +181,7 @@ const CoachDetail = () => {
                 )}
               </div>
               
-              <div className="flex items-center space-x-3 text-muted-foreground">
+              <div className="flex items-center space-x-3 text-gray-600">
                 <MapPin className="h-5 w-5" />
                 <span className="text-lg">{coach.location}</span>
               </div>
@@ -190,7 +190,7 @@ const CoachDetail = () => {
                 <Button
                   onClick={handleBookingRequest}
                   disabled={!coach.isAvailable}
-                  className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground font-semibold py-3 px-6 rounded-lg transition-all duration-300 text-lg"
+                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 text-lg"
                   size="lg"
                 >
                   {coach.isAvailable ? "Request Booking" : "Not Available"}
