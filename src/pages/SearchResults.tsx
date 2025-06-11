@@ -1,14 +1,15 @@
 
 import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { MapPin, Clock, CheckCircle, XCircle, Search, Filter } from "lucide-react";
+import { MapPin, Clock, CheckCircle, XCircle, Search, Filter, Share2 } from "lucide-react";
 import Header from "@/components/Header";
 import BookingWizard from "@/components/BookingWizard";
+import { useToast } from "@/hooks/use-toast";
 
 interface Coach {
   id: string;
@@ -74,13 +75,18 @@ const mockCoaches: Coach[] = [
   }
 ];
 
+// Get unique activity types for the filter
+const activityTypes = [...new Set(mockCoaches.map(coach => coach.activityType))];
+
 const SearchResults = () => {
   const [searchParams] = useSearchParams();
+  const { toast } = useToast();
   const [selectedCoach, setSelectedCoach] = useState<Coach | null>(null);
   const [isWizardOpen, setIsWizardOpen] = useState(false);
   const [nameFilter, setNameFilter] = useState("");
   const [availabilityFilter, setAvailabilityFilter] = useState<string>("all");
   const [locationFilter, setLocationFilter] = useState("");
+  const [activityFilter, setActivityFilter] = useState<string>("all");
   
   const searchQuery = searchParams.get('q') || '';
 
@@ -96,7 +102,9 @@ const SearchResults = () => {
     
     const matchesLocation = coach.location.toLowerCase().includes(locationFilter.toLowerCase());
     
-    return matchesSearch && matchesNameFilter && matchesAvailability && matchesLocation;
+    const matchesActivity = activityFilter === "all" || coach.activityType === activityFilter;
+    
+    return matchesSearch && matchesNameFilter && matchesAvailability && matchesLocation && matchesActivity;
   });
 
   const handleBookingRequest = (coach: Coach) => {
@@ -109,10 +117,23 @@ const SearchResults = () => {
     setSelectedCoach(null);
   };
 
+  const handleCopyLink = (coach: Coach, event: React.MouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+    const coachUrl = `${window.location.origin}/coach/${coach.id}`;
+    navigator.clipboard.writeText(coachUrl).then(() => {
+      toast({
+        title: "Link copied!",
+        description: `${coach.name}'s profile link has been copied to clipboard.`,
+      });
+    });
+  };
+
   const clearFilters = () => {
     setNameFilter("");
     setAvailabilityFilter("all");
     setLocationFilter("");
+    setActivityFilter("all");
   };
 
   return (
@@ -145,7 +166,7 @@ const SearchResults = () => {
             </div>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-700">Coach Name</label>
                 <div className="relative">
@@ -157,6 +178,23 @@ const SearchResults = () => {
                     className="pl-10"
                   />
                 </div>
+              </div>
+              
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-700">Activity Type</label>
+                <Select value={activityFilter} onValueChange={setActivityFilter}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select activity" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Activities</SelectItem>
+                    {activityTypes.map((activity) => (
+                      <SelectItem key={activity} value={activity}>
+                        {activity}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
               
               <div className="space-y-2">
@@ -202,57 +240,71 @@ const SearchResults = () => {
         {/* Results Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredCoaches.map((coach) => (
-            <Card key={coach.id} className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-0 bg-white/90 backdrop-blur-sm">
-              <CardHeader className="pb-4">
-                <div className="flex items-center space-x-4">
-                  <Avatar className="h-16 w-16 ring-4 ring-white shadow-lg">
-                    <AvatarImage src={coach.profilePic} alt={coach.name} />
-                    <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-500 text-white font-semibold">
-                      {coach.name.split(' ').map(n => n[0]).join('')}
-                    </AvatarFallback>
-                  </Avatar>
-                  <div className="flex-1">
-                    <CardTitle className="text-lg text-gray-900">{coach.name}</CardTitle>
-                    <p className="text-blue-600 font-medium">{coach.activityType}</p>
-                    <div className="flex items-center space-x-1 mt-1">
-                      <span className="text-yellow-500">★</span>
-                      <span className="text-sm text-gray-600">{coach.rating} • {coach.experience}</span>
+            <Link key={coach.id} to={`/coach/${coach.id}`} className="block">
+              <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-0 bg-white/90 backdrop-blur-sm h-full">
+                <CardHeader className="pb-4">
+                  <div className="flex items-center space-x-4">
+                    <Avatar className="h-16 w-16 ring-4 ring-white shadow-lg">
+                      <AvatarImage src={coach.profilePic} alt={coach.name} />
+                      <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-500 text-white font-semibold">
+                        {coach.name.split(' ').map(n => n[0]).join('')}
+                      </AvatarFallback>
+                    </Avatar>
+                    <div className="flex-1">
+                      <CardTitle className="text-lg text-gray-900">{coach.name}</CardTitle>
+                      <p className="text-blue-600 font-medium">{coach.activityType}</p>
+                      <div className="flex items-center space-x-1 mt-1">
+                        <span className="text-yellow-500">★</span>
+                        <span className="text-sm text-gray-600">{coach.rating} • {coach.experience}</span>
+                      </div>
                     </div>
+                    <Button
+                      onClick={(e) => handleCopyLink(coach, e)}
+                      variant="outline"
+                      size="icon"
+                      className="h-8 w-8"
+                    >
+                      <Share2 className="h-3 w-3" />
+                    </Button>
                   </div>
-                </div>
-              </CardHeader>
-              
-              <CardContent className="space-y-4">
-                <div className="flex items-center space-x-2 text-sm">
-                  {coach.isAvailable ? (
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="h-4 w-4 text-green-500" />
-                      <span className="text-green-600 font-medium">Available</span>
-                    </div>
-                  ) : (
-                    <div className="flex items-center space-x-2">
-                      <XCircle className="h-4 w-4 text-red-500" />
-                      <span className="text-red-600 font-medium">Busy</span>
-                    </div>
-                  )}
-                </div>
+                </CardHeader>
                 
-                <div className="flex items-center space-x-2 text-sm text-gray-600">
-                  <MapPin className="h-4 w-4" />
-                  <span>{coach.location}</span>
-                </div>
-                
-                <div className="pt-2">
-                  <Button
-                    onClick={() => handleBookingRequest(coach)}
-                    disabled={!coach.isAvailable}
-                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300"
-                  >
-                    {coach.isAvailable ? "Request Booking" : "Not Available"}
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+                <CardContent className="space-y-4">
+                  <div className="flex items-center space-x-2 text-sm">
+                    {coach.isAvailable ? (
+                      <div className="flex items-center space-x-2">
+                        <CheckCircle className="h-4 w-4 text-green-500" />
+                        <span className="text-green-600 font-medium">Available</span>
+                      </div>
+                    ) : (
+                      <div className="flex items-center space-x-2">
+                        <XCircle className="h-4 w-4 text-red-500" />
+                        <span className="text-red-600 font-medium">Busy</span>
+                      </div>
+                    )}
+                  </div>
+                  
+                  <div className="flex items-center space-x-2 text-sm text-gray-600">
+                    <MapPin className="h-4 w-4" />
+                    <span>{coach.location}</span>
+                  </div>
+                  
+                  <div className="pt-2">
+                    <Button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        handleBookingRequest(coach);
+                      }}
+                      disabled={!coach.isAvailable}
+                      className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300"
+                    >
+                      {coach.isAvailable ? "Request Booking" : "Not Available"}
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
           ))}
         </div>
 
