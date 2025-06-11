@@ -1,4 +1,3 @@
-
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -13,7 +12,7 @@ const mockCoaches = [
   {
     id: 1,
     name: "Sarah Johnson",
-    sport: "Tennis",
+    activityType: "Tennis",
     rating: 4.9,
     reviews: 127,
     price: 85,
@@ -23,12 +22,13 @@ const mockCoaches = [
     specialties: ["Beginner Friendly", "Competition Prep", "Technique Analysis"],
     availability: "Mon-Fri 6AM-8PM",
     experience: "10+ years",
-    certifications: ["USPTA Certified", "Mental Performance Coach"]
+    certifications: ["USPTA Certified", "Mental Performance Coach"],
+    isAvailable: true
   },
   {
     id: 2,
     name: "Mike Rodriguez",
-    sport: "Basketball",
+    activityType: "Basketball",
     rating: 4.8,
     reviews: 89,
     price: 75,
@@ -38,12 +38,13 @@ const mockCoaches = [
     specialties: ["Youth Training", "Shooting Technique", "Game Strategy"],
     availability: "Tue-Sun 3PM-9PM",
     experience: "8 years",
-    certifications: ["USA Basketball Certified", "Youth Development Specialist"]
+    certifications: ["USA Basketball Certified", "Youth Development Specialist"],
+    isAvailable: true
   },
   {
     id: 3,
     name: "Emily Chen",
-    sport: "Swimming",
+    activityType: "Swimming",
     rating: 4.9,
     reviews: 156,
     price: 90,
@@ -53,7 +54,8 @@ const mockCoaches = [
     specialties: ["Stroke Technique", "Competitive Swimming", "Triathlon Training"],
     availability: "Daily 5AM-10AM, 6PM-9PM",
     experience: "12 years",
-    certifications: ["Red Cross Certified", "Masters Swimming Coach"]
+    certifications: ["Red Cross Certified", "Masters Swimming Coach"],
+    isAvailable: true
   }
 ];
 
@@ -147,7 +149,7 @@ const CoachDetail = () => {
               />
               <div className="flex-1 text-center md:text-left">
                 <CardTitle className="text-3xl text-card-foreground mb-2">{coach.name}</CardTitle>
-                <CardDescription className="text-xl text-muted-foreground mb-4">{coach.sport} Coach</CardDescription>
+                <CardDescription className="text-xl text-muted-foreground mb-4">{coach.activityType} Coach</CardDescription>
                 
                 {/* Rating and Reviews */}
                 <div className="flex items-center justify-center md:justify-start gap-2 mb-4">
