@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -93,6 +92,18 @@ const mockCoaches: Coach[] = [
 // Get unique activity types for the filter
 const activityTypes = [...new Set(mockCoaches.map(coach => coach.activityType))];
 
+// Activity logo mapping
+const getActivityLogo = (activityType: string) => {
+  const logoMap: { [key: string]: string } = {
+    "Piano": "https://images.unsplash.com/photo-1466721591366-2d5fba72006d?w=200&h=200&fit=crop&crop=center",
+    "Tennis": "https://images.unsplash.com/photo-1493962853295-0fd70327578a?w=200&h=200&fit=crop&crop=center",
+    "Math Tutoring": "https://images.unsplash.com/photo-1452378174528-3090a4bba7b2?w=200&h=200&fit=crop&crop=center",
+    "Swimming": "https://images.unsplash.com/photo-1485833077593-4278bba3f11f?w=200&h=200&fit=crop&crop=center",
+    "Guitar": "https://images.unsplash.com/photo-1441057206919-63d19fac2369?w=200&h=200&fit=crop&crop=center"
+  };
+  return logoMap[activityType] || "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=200&h=200&fit=crop&crop=center";
+};
+
 const SearchResults = () => {
   const [searchParams] = useSearchParams();
   const { toast } = useToast();
@@ -163,12 +174,27 @@ const SearchResults = () => {
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
         }}></div>
         <div className="relative container mx-auto px-4 py-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Search Results for "{searchQuery}"
-          </h1>
-          <p className="text-xl text-blue-100">
-            Found {filteredCoaches.length} coach{filteredCoaches.length !== 1 ? 'es' : ''} matching your search
-          </p>
+          <div className="flex items-center justify-between">
+            <div className="flex-1">
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">
+                Search Results for "{searchQuery}"
+              </h1>
+              <p className="text-xl text-blue-100">
+                Found {filteredCoaches.length} coach{filteredCoaches.length !== 1 ? 'es' : ''} matching your search
+              </p>
+            </div>
+            {searchQuery && (
+              <div className="hidden md:flex items-center justify-center">
+                <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl">
+                  <img 
+                    src={getActivityLogo(searchQuery)} 
+                    alt={`${searchQuery} activity`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
