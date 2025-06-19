@@ -82,6 +82,9 @@ const Header = () => {
 
           {/* Desktop Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
+            <Button className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700">
+              Join as a Provider
+            </Button>
             <Button variant="ghost" className="text-gray-600">Login</Button>
             <Button className="bg-blue-600 hover:bg-blue-700">Sign Up</Button>
           </div>
@@ -124,6 +127,9 @@ const Header = () => {
                 Terms
               </button>
               <div className="flex flex-col space-y-2 pt-4">
+                <Button className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700">
+                  Join as a Provider
+                </Button>
                 <Button variant="ghost" className="text-gray-600">Login</Button>
                 <Button className="bg-blue-600 hover:bg-blue-700">Sign Up</Button>
               </div>
