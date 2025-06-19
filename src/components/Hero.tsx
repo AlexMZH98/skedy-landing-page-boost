@@ -125,49 +125,45 @@ const Hero = () => {
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-green-400/30 to-blue-500/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
       <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-indigo-400/20 to-purple-600/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       
-      <div className="relative z-10 py-20">
+      <div className="relative z-10 py-12">
         <div className="container mx-auto px-4">
           {/* Full Width Search Section */}
-          <div className="max-w-4xl mx-auto space-y-8">
-            <div className="text-center space-y-4">
+          <div className="max-w-4xl mx-auto space-y-6">
+            <div className="text-center space-y-3">
               <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight">
                 Find Your Perfect
                 <span className="text-yellow-300 block">Coach or Instructor or Teacher</span>
               </h1>
             </div>
 
-            {/* Categories - More Dedicated Section */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20">
-              <div className="text-center space-y-6">
-                <h2 className="text-2xl font-bold text-white">Browse by Category</h2>
-                <div className="flex justify-center gap-6">
-                  <Button
-                    onClick={() => handleCategoryClick("Sports")}
-                    className="bg-white/20 hover:bg-white/30 text-white border border-white/30 backdrop-blur-sm px-8 py-4 rounded-lg transition-all duration-200 transform hover:scale-105 text-lg"
-                    variant="outline"
-                  >
-                    🏈 Sports
-                  </Button>
-                  <Button
-                    onClick={() => handleCategoryClick("Education")}
-                    className="bg-white/20 hover:bg-white/30 text-white border border-white/30 backdrop-blur-sm px-8 py-4 rounded-lg transition-all duration-200 transform hover:scale-105 text-lg"
-                    variant="outline"
-                  >
-                    📚 Education
-                  </Button>
-                </div>
+            {/* Categories - Clean Section */}
+            <div className="text-center space-y-4">
+              <h2 className="text-2xl font-bold text-white">Browse by Category</h2>
+              <div className="flex justify-center gap-4">
+                <Button
+                  onClick={() => handleCategoryClick("Sports")}
+                  className="bg-white text-purple-600 hover:bg-gray-100 px-6 py-3 rounded-lg transition-all duration-200 transform hover:scale-105 text-base font-semibold"
+                >
+                  🏈 Sports
+                </Button>
+                <Button
+                  onClick={() => handleCategoryClick("Education")}
+                  className="bg-white text-purple-600 hover:bg-gray-100 px-6 py-3 rounded-lg transition-all duration-200 transform hover:scale-105 text-base font-semibold"
+                >
+                  📚 Education
+                </Button>
               </div>
             </div>
 
-            {/* Search Bar - Full Width */}
-            <div className="bg-white/95 backdrop-blur-sm rounded-lg shadow-xl p-8">
-              <div className="space-y-6">
-                <div className="flex gap-4">
+            {/* Search Bar - Compact */}
+            <div className="bg-white/95 backdrop-blur-sm rounded-lg shadow-xl p-6">
+              <div className="space-y-4">
+                <div className="flex gap-3">
                   <div className="flex-1 relative" ref={searchRef}>
                     <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                     <Input 
                       placeholder="Sport, activity, or skill..." 
-                      className="pl-10 h-12 text-lg"
+                      className="pl-10 h-10 text-base"
                       value={searchQuery}
                       onChange={handleInputChange}
                       onKeyPress={handleKeyPress}
@@ -198,18 +194,18 @@ const Hero = () => {
                     )}
                   </div>
                   <Button 
-                    className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-12 py-3 h-12 text-lg shadow-lg"
+                    className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-2 h-10 text-base shadow-lg"
                     onClick={() => handleSearch()}
                     disabled={!searchQuery.trim()}
                   >
                     Search
                   </Button>
                 </div>
-                <div className="flex flex-wrap justify-center gap-3">
+                <div className="flex flex-wrap justify-center gap-2">
                   {["Tennis", "Piano", "Math Tutoring", "Swimming", "Guitar"].map((tag) => (
                     <span 
                       key={tag} 
-                      className="px-4 py-2 bg-gradient-to-r from-purple-100 to-blue-100 text-purple-700 rounded-full text-sm hover:from-purple-200 hover:to-blue-200 cursor-pointer transition-all duration-200 transform hover:scale-105"
+                      className="px-3 py-1 bg-gradient-to-r from-purple-100 to-blue-100 text-purple-700 rounded-full text-sm hover:from-purple-200 hover:to-blue-200 cursor-pointer transition-all duration-200 transform hover:scale-105"
                       onClick={() => handleTagClick(tag)}
                     >
                       {tag}
