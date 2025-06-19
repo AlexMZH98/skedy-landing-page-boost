@@ -1,7 +1,6 @@
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search, Calendar, CreditCard, Users } from "lucide-react";
+import { Search } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -224,37 +223,11 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Right Side - Provider Benefits */}
-            <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl p-8">
-              <div className="space-y-6">
-                <div className="text-center">
-                  <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                    Are You a Coach or Instructor?
-                  </h2>
-                  <p className="text-gray-600 mb-6">
-                    Join thousands of providers who use Skedy to manage their business and grow their client base.
-                  </p>
-                </div>
-
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-3">
-                    <Calendar className="h-6 w-6 text-green-600" />
-                    <span className="text-gray-700">Easy scheduling & calendar management</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <CreditCard className="h-6 w-6 text-green-600" />
-                    <span className="text-gray-700">Secure payments & billing automation</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <Users className="h-6 w-6 text-green-600" />
-                    <span className="text-gray-700">Client management & invitations</span>
-                  </div>
-                </div>
-
-                <Button className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-lg py-3 shadow-lg transform hover:scale-105 transition-all duration-200">
-                  Join as a Provider
-                </Button>
-              </div>
+            {/* Right Side - Provider Button Only */}
+            <div className="flex justify-center lg:justify-end">
+              <Button className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-lg py-3 px-8 shadow-lg transform hover:scale-105 transition-all duration-200">
+                Join as a Provider
+              </Button>
             </div>
           </div>
         </div>
