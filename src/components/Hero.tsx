@@ -91,8 +91,19 @@ const Hero = () => {
     navigate(`/search?q=${encodeURIComponent(tag)}`);
   };
 
+  const handleCategoryClick = (category: string) => {
+    const categoryActivities = {
+      "Sports": ["Tennis", "Swimming", "Basketball", "Soccer", "Golf", "Baseball", "Volleyball", "Running"],
+      "Education": ["Math Tutoring", "English Tutoring", "Science Tutoring", "Piano", "Guitar", "Violin", "Art", "Language"]
+    };
+    
+    const activities = categoryActivities[category as keyof typeof categoryActivities] || [];
+    const searchTerm = activities.join(" OR ");
+    navigate(`/search?category=${encodeURIComponent(category)}`);
+  };
+
   const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && searchQuery.trim()) {
       handleSearch();
     }
   };
@@ -128,6 +139,27 @@ const Hero = () => {
                 <p className="text-xl text-blue-100">
                   Discover, book, and pay for sports lessons, tutoring, and activities in your area.
                 </p>
+              </div>
+
+              {/* Categories */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-white">Browse by Category</h3>
+                <div className="flex gap-4">
+                  <Button
+                    onClick={() => handleCategoryClick("Sports")}
+                    className="bg-white/20 hover:bg-white/30 text-white border border-white/30 backdrop-blur-sm px-6 py-3 rounded-lg transition-all duration-200 transform hover:scale-105"
+                    variant="outline"
+                  >
+                    🏈 Sports
+                  </Button>
+                  <Button
+                    onClick={() => handleCategoryClick("Education")}
+                    className="bg-white/20 hover:bg-white/30 text-white border border-white/30 backdrop-blur-sm px-6 py-3 rounded-lg transition-all duration-200 transform hover:scale-105"
+                    variant="outline"
+                  >
+                    📚 Education
+                  </Button>
+                </div>
               </div>
 
               {/* Search Bar */}
@@ -172,6 +204,7 @@ const Hero = () => {
                     <Button 
                       className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 shadow-lg"
                       onClick={() => handleSearch()}
+                      disabled={!searchQuery.trim()}
                     >
                       Search
                     </Button>
@@ -221,10 +254,6 @@ const Hero = () => {
                 <Button className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-lg py-3 shadow-lg transform hover:scale-105 transition-all duration-200">
                   Join as a Provider
                 </Button>
-
-                <p className="text-sm text-gray-500 text-center">
-                  Free to start • No setup fees • Cancel anytime
-                </p>
               </div>
             </div>
           </div>

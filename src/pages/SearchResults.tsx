@@ -116,10 +116,24 @@ const SearchResults = () => {
   const [activityOpen, setActivityOpen] = useState(false);
   
   const searchQuery = searchParams.get('q') || '';
+  const categoryQuery = searchParams.get('category') || '';
+  
+  // Category-based activity mapping
+  const categoryActivities = {
+    "Sports": ["Tennis", "Swimming", "Basketball", "Soccer"],
+    "Education": ["Math Tutoring", "English Tutoring", "Piano", "Guitar", "Violin"]
+  };
 
   const filteredCoaches = mockCoaches.filter(coach => {
-    const matchesSearch = coach.activityType.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         coach.name.toLowerCase().includes(searchQuery.toLowerCase());
+    let matchesSearch = true;
+    
+    if (searchQuery) {
+      matchesSearch = coach.activityType.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                     coach.name.toLowerCase().includes(searchQuery.toLowerCase());
+    } else if (categoryQuery) {
+      const activitiesInCategory = categoryActivities[categoryQuery as keyof typeof categoryActivities] || [];
+      matchesSearch = activitiesInCategory.includes(coach.activityType);
+    }
     
     const matchesNameFilter = coach.name.toLowerCase().includes(nameFilter.toLowerCase());
     
@@ -163,6 +177,17 @@ const SearchResults = () => {
     setActivityFilter("all");
   };
 
+  const displayTitle = () => {
+    if (searchQuery) {
+      return `Search Results for "${searchQuery}"`;
+    } else if (categoryQuery) {
+      return `${categoryQuery} Coaches`;
+    }
+    return "All Coaches";
+  };
+
+  const displayQuery = searchQuery || categoryQuery;
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
       <Header />
@@ -177,18 +202,18 @@ const SearchResults = () => {
           <div className="flex items-center justify-between">
             <div className="flex-1">
               <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                Search Results for "{searchQuery}"
+                {displayTitle()}
               </h1>
               <p className="text-xl text-blue-100">
                 Found {filteredCoaches.length} coach{filteredCoaches.length !== 1 ? 'es' : ''} matching your search
               </p>
             </div>
-            {searchQuery && (
+            {displayQuery && (
               <div className="hidden md:flex items-center justify-center">
                 <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl">
                   <img 
-                    src={getActivityLogo(searchQuery)} 
-                    alt={`${searchQuery} activity`}
+                    src={getActivityLogo(displayQuery)} 
+                    alt={`${displayQuery} activity`}
                     className="w-full h-full object-cover"
                   />
                 </div>
