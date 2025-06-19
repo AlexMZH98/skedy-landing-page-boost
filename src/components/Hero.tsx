@@ -132,38 +132,36 @@ const Hero = () => {
             <div className="text-center space-y-4">
               <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight">
                 Find Your Perfect
-                <span className="text-yellow-300 block">Coach or Instructor</span>
+                <span className="text-yellow-300 block">Coach or Instructor or Teacher</span>
               </h1>
-              <p className="text-xl text-blue-100">
-                Discover, book, and pay for sports lessons, tutoring, and activities in your area.
-              </p>
             </div>
 
-            {/* Categories */}
-            <div className="text-center space-y-4">
-              <h3 className="text-lg font-semibold text-white">Browse by Category</h3>
-              <div className="flex justify-center gap-4">
-                <Button
-                  onClick={() => handleCategoryClick("Sports")}
-                  className="bg-white/20 hover:bg-white/30 text-white border border-white/30 backdrop-blur-sm px-6 py-3 rounded-lg transition-all duration-200 transform hover:scale-105"
-                  variant="outline"
-                >
-                  🏈 Sports
-                </Button>
-                <Button
-                  onClick={() => handleCategoryClick("Education")}
-                  className="bg-white/20 hover:bg-white/30 text-white border border-white/30 backdrop-blur-sm px-6 py-3 rounded-lg transition-all duration-200 transform hover:scale-105"
-                  variant="outline"
-                >
-                  📚 Education
-                </Button>
+            {/* Categories - More Dedicated Section */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20">
+              <div className="text-center space-y-6">
+                <h2 className="text-2xl font-bold text-white">Browse by Category</h2>
+                <div className="flex justify-center gap-6">
+                  <Button
+                    onClick={() => handleCategoryClick("Sports")}
+                    className="bg-white/20 hover:bg-white/30 text-white border border-white/30 backdrop-blur-sm px-8 py-4 rounded-lg transition-all duration-200 transform hover:scale-105 text-lg"
+                    variant="outline"
+                  >
+                    🏈 Sports
+                  </Button>
+                  <Button
+                    onClick={() => handleCategoryClick("Education")}
+                    className="bg-white/20 hover:bg-white/30 text-white border border-white/30 backdrop-blur-sm px-8 py-4 rounded-lg transition-all duration-200 transform hover:scale-105 text-lg"
+                    variant="outline"
+                  >
+                    📚 Education
+                  </Button>
+                </div>
               </div>
             </div>
 
             {/* Search Bar - Full Width */}
             <div className="bg-white/95 backdrop-blur-sm rounded-lg shadow-xl p-8">
               <div className="space-y-6">
-                <h3 className="text-2xl font-semibold text-gray-900 text-center">Search for Coaches</h3>
                 <div className="flex gap-4">
                   <div className="flex-1 relative" ref={searchRef}>
                     <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
