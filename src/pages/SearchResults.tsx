@@ -24,6 +24,7 @@ interface Coach {
   experience: string;
   price: number;
   logo?: string;
+  description: string;
 }
 
 const mockCoaches: Coach[] = [
@@ -37,7 +38,8 @@ const mockCoaches: Coach[] = [
     rating: 4.9,
     experience: "5+ years",
     price: 75,
-    logo: "https://images.unsplash.com/photo-1493962853295-0fd70327578a?w=100&h=100&fit=crop&crop=center"
+    logo: "https://images.unsplash.com/photo-1493962853295-0fd70327578a?w=100&h=100&fit=crop&crop=center",
+    description: "Professional tennis coach with 5+ years of experience. Specializes in beginner to intermediate level training with focus on proper technique and game strategy."
   },
   {
     id: "2",
@@ -49,7 +51,8 @@ const mockCoaches: Coach[] = [
     rating: 4.8,
     experience: "10+ years",
     price: 90,
-    logo: "https://images.unsplash.com/photo-1466721591366-2d5fba72006d?w=100&h=100&fit=crop&crop=center"
+    logo: "https://images.unsplash.com/photo-1466721591366-2d5fba72006d?w=100&h=100&fit=crop&crop=center",
+    description: "Classically trained pianist and music educator. Expert in classical, jazz, and contemporary styles. Patient instructor perfect for all skill levels."
   },
   {
     id: "3",
@@ -61,7 +64,8 @@ const mockCoaches: Coach[] = [
     rating: 4.95,
     experience: "8+ years",
     price: 65,
-    logo: "https://images.unsplash.com/photo-1452378174528-3090a4bba7b2?w=100&h=100&fit=crop&crop=center"
+    logo: "https://images.unsplash.com/photo-1452378174528-3090a4bba7b2?w=100&h=100&fit=crop&crop=center",
+    description: "PhD in Mathematics with extensive tutoring experience. Specializes in algebra, calculus, and test preparation. Makes complex concepts easy to understand."
   },
   {
     id: "4",
@@ -73,7 +77,8 @@ const mockCoaches: Coach[] = [
     rating: 4.7,
     experience: "6+ years",
     price: 80,
-    logo: "https://images.unsplash.com/photo-1485833077593-4278bba3f11f?w=100&h=100&fit=crop&crop=center"
+    logo: "https://images.unsplash.com/photo-1485833077593-4278bba3f11f?w=100&h=100&fit=crop&crop=center",
+    description: "Former competitive swimmer and certified swim instructor. Expert in stroke technique, endurance training, and water safety for all ages."
   },
   {
     id: "5",
@@ -85,7 +90,8 @@ const mockCoaches: Coach[] = [
     rating: 4.85,
     experience: "7+ years",
     price: 70,
-    logo: "https://images.unsplash.com/photo-1441057206919-63d19fac2369?w=100&h=100&fit=crop&crop=center"
+    logo: "https://images.unsplash.com/photo-1441057206919-63d19fac2369?w=100&h=100&fit=crop&crop=center",
+    description: "Professional guitarist with experience in rock, blues, and acoustic styles. Passionate about teaching music theory and helping students find their unique sound."
   }
 ];
 
@@ -389,6 +395,11 @@ const SearchResults = () => {
                 </CardHeader>
                 
                 <CardContent className="space-y-4">
+                  {/* Description */}
+                  <div className="text-sm text-gray-600 line-clamp-3">
+                    {coach.description}
+                  </div>
+                  
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2 text-sm">
                       {coach.isAvailable ? (

@@ -85,8 +85,7 @@ const Header = () => {
             <Button className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700">
               Join as a Provider
             </Button>
-            <Button variant="ghost" className="text-gray-600">Login</Button>
-            <Button className="bg-blue-600 hover:bg-blue-700">Sign Up</Button>
+            <Button className="bg-blue-600 hover:bg-blue-700">Sign In</Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -130,8 +129,7 @@ const Header = () => {
                 <Button className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700">
                   Join as a Provider
                 </Button>
-                <Button variant="ghost" className="text-gray-600">Login</Button>
-                <Button className="bg-blue-600 hover:bg-blue-700">Sign Up</Button>
+                <Button className="bg-blue-600 hover:bg-blue-700">Sign In</Button>
               </div>
             </nav>
           </div>

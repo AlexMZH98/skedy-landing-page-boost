@@ -18,6 +18,7 @@ interface Coach {
   location: string;
   rating: number;
   experience: string;
+  description: string;
 }
 
 const mockCoaches: Coach[] = [
@@ -29,7 +30,8 @@ const mockCoaches: Coach[] = [
     isAvailable: true,
     location: "Central Park, NYC",
     rating: 4.9,
-    experience: "5+ years"
+    experience: "5+ years",
+    description: "Professional tennis coach with 5+ years of experience. Specializes in beginner to intermediate level training with focus on proper technique and game strategy. I believe in creating a supportive and encouraging environment where students can develop their skills at their own pace while building confidence on the court."
   },
   {
     id: "2",
@@ -39,7 +41,8 @@ const mockCoaches: Coach[] = [
     isAvailable: false,
     location: "Manhattan Music Studio",
     rating: 4.8,
-    experience: "10+ years"
+    experience: "10+ years",
+    description: "Classically trained pianist and music educator with over 10 years of teaching experience. Expert in classical, jazz, and contemporary styles. Patient instructor perfect for all skill levels, from complete beginners to advanced students preparing for competitions or recitals."
   },
   {
     id: "3",
@@ -49,7 +52,8 @@ const mockCoaches: Coach[] = [
     isAvailable: true,
     location: "Online & Home visits",
     rating: 4.95,
-    experience: "8+ years"
+    experience: "8+ years",
+    description: "PhD in Mathematics with extensive tutoring experience across all levels. Specializes in algebra, calculus, statistics, and test preparation (SAT, ACT, GRE). I have a proven track record of helping students overcome math anxiety and achieve significant improvements in their grades and test scores."
   },
   {
     id: "4",
@@ -59,7 +63,8 @@ const mockCoaches: Coach[] = [
     isAvailable: true,
     location: "Aquatic Center Downtown",
     rating: 4.7,
-    experience: "6+ years"
+    experience: "6+ years",
+    description: "Former competitive swimmer and certified swim instructor with 6+ years of coaching experience. Expert in stroke technique, endurance training, and water safety for all ages. Whether you're learning to swim for the first time or training for competition, I'll help you achieve your goals safely and effectively."
   },
   {
     id: "5",
@@ -69,7 +74,8 @@ const mockCoaches: Coach[] = [
     isAvailable: true,
     location: "Music Academy West Side",
     rating: 4.85,
-    experience: "7+ years"
+    experience: "7+ years",
+    description: "Professional guitarist with 7+ years of teaching experience in rock, blues, classical, and acoustic styles. Passionate about helping students discover their unique musical voice while building solid fundamentals. I customize lessons to match each student's musical interests and goals."
   }
 ];
 
@@ -167,6 +173,12 @@ const CoachDetail = () => {
             </CardHeader>
             
             <CardContent className="space-y-6">
+              {/* Description Section */}
+              <div className="bg-gray-50 rounded-lg p-4">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">About</h3>
+                <p className="text-gray-700 leading-relaxed">{coach.description}</p>
+              </div>
+              
               <div className="flex items-center space-x-3">
                 {coach.isAvailable ? (
                   <div className="flex items-center space-x-3">
