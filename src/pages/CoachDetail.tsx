@@ -7,6 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { MapPin, CheckCircle, XCircle, ArrowLeft, Share2 } from "lucide-react";
 import Header from "@/components/Header";
 import BookingWizard from "@/components/BookingWizard";
+import CustomerReviews from "@/components/CustomerReviews";
 import { useToast } from "@/hooks/use-toast";
 
 interface Coach {
@@ -210,6 +211,9 @@ const CoachDetail = () => {
               </div>
             </CardContent>
           </Card>
+
+          {/* Customer Reviews Section */}
+          <CustomerReviews coachId={coach.id} />
         </div>
       </div>
 

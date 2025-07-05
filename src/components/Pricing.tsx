@@ -1,8 +1,11 @@
 
 import { Button } from "@/components/ui/button";
 import { Check, X } from "lucide-react";
+import { useState } from "react";
 
 const Pricing = () => {
+  const [selectedRegion, setSelectedRegion] = useState<"georgia" | "global">("georgia");
+
   const parentFeatures = [
     "Book class session",
     "Track sessions", 
@@ -13,10 +16,15 @@ const Pricing = () => {
     "Make payments"
   ];
 
+  const getRegionalPricing = (georgiaPrice: number, globalPrice: number) => {
+    return selectedRegion === "georgia" ? georgiaPrice : globalPrice;
+  };
+
   const coachPlans = [
     {
       name: "Free",
-      price: "$0",
+      georgiaPrice: 0,
+      globalPrice: 0,
       period: "forever",
       description: "Perfect for getting started",
       features: [
@@ -35,7 +43,8 @@ const Pricing = () => {
     },
     {
       name: "Advance",
-      price: "$25",
+      georgiaPrice: 15,
+      globalPrice: 25,
       period: "per month",
       description: "",
       features: [
@@ -73,9 +82,33 @@ const Pricing = () => {
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
             Simple, Transparent Pricing
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
             Choose the plan that works for your business. All plans include secure payments and basic features.
           </p>
+          
+          {/* Region Switcher */}
+          <div className="inline-flex items-center bg-white rounded-lg p-1 border-2 border-blue-100">
+            <button
+              onClick={() => setSelectedRegion("georgia")}
+              className={`px-4 py-2 rounded-md font-medium transition-all ${
+                selectedRegion === "georgia"
+                  ? "bg-blue-600 text-white shadow-sm"
+                  : "text-gray-600 hover:text-blue-600"
+              }`}
+            >
+              Georgia
+            </button>
+            <button
+              onClick={() => setSelectedRegion("global")}
+              className={`px-4 py-2 rounded-md font-medium transition-all ${
+                selectedRegion === "global"
+                  ? "bg-blue-600 text-white shadow-sm"
+                  : "text-gray-600 hover:text-blue-600"
+              }`}
+            >
+              Global
+            </button>
+          </div>
         </div>
 
         <div className="max-w-6xl mx-auto border-2 border-blue-400 rounded-lg bg-white p-8">
@@ -124,7 +157,9 @@ const Pricing = () => {
                     <div className="text-center mb-6">
                       <h4 className="text-xl font-bold text-gray-900 mb-2">{plan.name}</h4>
                       <div className="mb-2">
-                        <span className="text-3xl font-bold text-gray-900">{plan.price}</span>
+                        <span className="text-3xl font-bold text-gray-900">
+                          ${getRegionalPricing(plan.georgiaPrice, plan.globalPrice)}
+                        </span>
                         <span className="text-gray-600 text-sm block">/{plan.period}</span>
                       </div>
                     </div>
@@ -163,7 +198,9 @@ const Pricing = () => {
               <div className="text-center mb-8">
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Pro</h3>
                 <div className="mb-4">
-                  <span className="text-4xl font-bold text-gray-900">$35</span>
+                  <span className="text-4xl font-bold text-gray-900">
+                    ${getRegionalPricing(20, 35)}
+                  </span>
                   <span className="text-gray-600 text-sm block">/per month</span>
                 </div>
               </div>

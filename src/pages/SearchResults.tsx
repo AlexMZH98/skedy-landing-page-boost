@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -7,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { MapPin, Clock, CheckCircle, XCircle, Search, Filter, Share2, Check, ChevronsUpDown, DollarSign } from "lucide-react";
+import { MapPin, Clock, CheckCircle, XCircle, Search, Filter, Share2, Check, ChevronsUpDown, DollarSign, MessageSquare, Eye } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Header from "@/components/Header";
 import BookingWizard from "@/components/BookingWizard";
@@ -358,8 +359,16 @@ const SearchResults = () => {
         {/* Results Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredCoaches.map((coach) => (
-            <Link key={coach.id} to={`/coach/${coach.id}`} className="block">
-              <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-0 bg-white/90 backdrop-blur-sm h-full">
+            <Link key={coach.id} to={`/coach/${coach.id}`} className="block group">
+              <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-0 bg-white/90 backdrop-blur-sm h-full relative">
+                {/* Clickable indicator */}
+                <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  <div className="bg-blue-600 text-white px-2 py-1 rounded-full text-xs font-medium flex items-center space-x-1">
+                    <Eye className="h-3 w-3" />
+                    <span>View</span>
+                  </div>
+                </div>
+
                 <CardHeader className="pb-4">
                   <div className="flex items-center space-x-4">
                     <div className="relative">
@@ -398,6 +407,24 @@ const SearchResults = () => {
                   {/* Description */}
                   <div className="text-sm text-gray-600 line-clamp-3">
                     {coach.description}
+                  </div>
+                  
+                  {/* Reviews indicator button */}
+                  <div className="flex items-center justify-between">
+                    <Button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        // Navigate to coach page with reviews section
+                        window.location.href = `/coach/${coach.id}#reviews`;
+                      }}
+                      variant="outline"
+                      size="sm"
+                      className="text-xs hover:bg-blue-50"
+                    >
+                      <MessageSquare className="h-3 w-3 mr-1" />
+                      Reviews & Comments
+                    </Button>
                   </div>
                   
                   <div className="flex items-center justify-between">
