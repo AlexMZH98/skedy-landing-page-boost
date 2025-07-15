@@ -19,6 +19,10 @@ interface Coach {
   name: string;
   profilePic: string;
   activityType: string;
+  categories: Array<{
+    category: string;
+    subcategory: string;
+  }>;
   isAvailable: boolean;
   location: string;
   rating: number;
@@ -34,6 +38,10 @@ const mockCoaches: Coach[] = [
     name: "Sarah Johnson",
     profilePic: "/placeholder.svg",
     activityType: "Tennis",
+    categories: [
+      { category: "Sport", subcategory: "Tennis" },
+      { category: "Fitness", subcategory: "Athletic Training" }
+    ],
     isAvailable: true,
     location: "Central Park, NYC",
     rating: 4.9,
@@ -47,6 +55,10 @@ const mockCoaches: Coach[] = [
     name: "Mike Chen",
     profilePic: "/placeholder.svg",
     activityType: "Piano",
+    categories: [
+      { category: "Education", subcategory: "Piano" },
+      { category: "Music", subcategory: "Classical Music" }
+    ],
     isAvailable: false,
     location: "Manhattan Music Studio",
     rating: 4.8,
@@ -60,6 +72,10 @@ const mockCoaches: Coach[] = [
     name: "Dr. Emily Rodriguez",
     profilePic: "/placeholder.svg",
     activityType: "Math Tutoring",
+    categories: [
+      { category: "Education", subcategory: "Math Tutoring" },
+      { category: "Academic", subcategory: "Test Preparation" }
+    ],
     isAvailable: true,
     location: "Online & Home visits",
     rating: 4.95,
@@ -73,6 +89,10 @@ const mockCoaches: Coach[] = [
     name: "David Kim",
     profilePic: "/placeholder.svg",
     activityType: "Swimming",
+    categories: [
+      { category: "Sport", subcategory: "Swimming" },
+      { category: "Fitness", subcategory: "Aqua Fitness" }
+    ],
     isAvailable: true,
     location: "Aquatic Center Downtown",
     rating: 4.7,
@@ -86,6 +106,10 @@ const mockCoaches: Coach[] = [
     name: "Jessica Martinez",
     profilePic: "/placeholder.svg",
     activityType: "Guitar",
+    categories: [
+      { category: "Education", subcategory: "Guitar" },
+      { category: "Music", subcategory: "Rock Music" }
+    ],
     isAvailable: true,
     location: "Music Academy West Side",
     rating: 4.85,
@@ -386,8 +410,17 @@ const SearchResults = () => {
                     </div>
                     <div className="flex-1">
                       <CardTitle className="text-lg text-gray-900">{coach.name}</CardTitle>
-                      <p className="text-blue-600 font-medium">{coach.activityType}</p>
-                      <div className="flex items-center space-x-1 mt-1">
+                      <div className="flex flex-wrap gap-1 mt-1">
+                        {coach.categories.map((cat, index) => (
+                          <span
+                            key={index}
+                            className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
+                          >
+                            {cat.category}: {cat.subcategory}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="flex items-center space-x-1 mt-2">
                         <span className="text-yellow-500">★</span>
                         <span className="text-sm text-gray-600">{coach.rating} • {coach.experience}</span>
                       </div>
