@@ -62,6 +62,40 @@ const Features = () => {
   return (
     <section id="features" className="py-20 bg-white">
       <div className="container mx-auto px-4">
+        {/* Download Buttons */}
+        <div className="text-center mb-12">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a 
+              href="#" 
+              className="inline-flex items-center px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
+            >
+              <svg className="w-6 h-6 mr-3" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.523 15.3414c-.5511 0-.9993-.4482-.9993-.9993s.4482-.9993.9993-.9993.9993.4482.9993.9993-.4482.9993-.9993.9993zm-11.046 0c-.5511 0-.9993-.4482-.9993-.9993s.4482-.9993.9993-.9993.9993.4482.9993.9993-.4482.9993-.9993.9993z"/>
+                <path d="M22.362 9.1747c-.24-.4718-.7264-.7695-1.2767-.7695H2.9147c-.5503 0-1.0367.2977-1.2767.7695-.24.4718-.1859 1.0419.1421 1.4947l8.085 11.1669c.3146.4346.8213.6934 1.3587.6934s1.044-.2588 1.3587-.6934l8.085-11.1669c.328-.4528.3821-1.0229.1421-1.4947z"/>
+              </svg>
+              <div className="text-left">
+                <div className="text-xs">Download on the</div>
+                <div className="text-sm font-semibold">App Store</div>
+              </div>
+            </a>
+            <a 
+              href="#" 
+              className="inline-flex items-center px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
+            >
+              <svg className="w-6 h-6 mr-3" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3.609 1.814L13.792 12 3.61 22.186c-.405-.087-.61-.23-.61-.576V2.39c0-.347.205-.49.61-.576z"/>
+                <path d="M14.5 12l3.608-3.608c.563-.563.867-1.312.867-2.11s-.304-1.547-.867-2.11L14.5 12z"/>
+                <path d="M20.392 10.172l-2.685-1.54L14.5 12l3.207 3.368 2.685-1.54c.789-.453 1.289-1.312 1.289-2.328s-.5-1.875-1.289-2.328z"/>
+                <path d="M3.609 1.814l10.891 10.186L17.707 8.632 3.61 22.186l10.89-10.186L17.707 15.368z"/>
+              </svg>
+              <div className="text-left">
+                <div className="text-xs">Get it on</div>
+                <div className="text-sm font-semibold">Google Play</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
             Built for Everyone
