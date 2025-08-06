@@ -65,34 +65,41 @@ const Features = () => {
         {/* Download Buttons */}
         <div className="text-center mb-12">
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            {/* App Store Button */}
             <a 
               href="#" 
-              className="inline-flex items-center px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
+              className="group inline-flex items-center px-6 py-3 bg-gradient-to-r from-gray-900 to-black text-white rounded-lg hover:from-gray-800 hover:to-gray-900 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
             >
-              <svg className="w-6 h-6 mr-3" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.523 15.3414c-.5511 0-.9993-.4482-.9993-.9993s.4482-.9993.9993-.9993.9993.4482.9993.9993-.4482.9993-.9993.9993zm-11.046 0c-.5511 0-.9993-.4482-.9993-.9993s.4482-.9993.9993-.9993.9993.4482.9993.9993-.4482.9993-.9993.9993z"/>
-                <path d="M22.362 9.1747c-.24-.4718-.7264-.7695-1.2767-.7695H2.9147c-.5503 0-1.0367.2977-1.2767.7695-.24.4718-.1859 1.0419.1421 1.4947l8.085 11.1669c.3146.4346.8213.6934 1.3587.6934s1.044-.2588 1.3587-.6934l8.085-11.1669c.328-.4528.3821-1.0229.1421-1.4947z"/>
+              <svg className="w-8 h-8 mr-3 group-hover:animate-pulse" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
               </svg>
               <div className="text-left">
-                <div className="text-xs">Download on the</div>
-                <div className="text-sm font-semibold">App Store</div>
+                <div className="text-xs opacity-90">Download on the</div>
+                <div className="text-lg font-semibold">App Store</div>
               </div>
             </a>
+
+            {/* Google Play Store Button */}
             <a 
               href="#" 
-              className="inline-flex items-center px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
+              className="group inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-500 via-blue-500 to-purple-600 text-white rounded-lg hover:from-green-400 hover:via-blue-400 hover:to-purple-500 transition-all duration-300 transform hover:scale-105 hover:shadow-xl animate-pulse hover:animate-none"
             >
-              <svg className="w-6 h-6 mr-3" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M3.609 1.814L13.792 12 3.61 22.186c-.405-.087-.61-.23-.61-.576V2.39c0-.347.205-.49.61-.576z"/>
-                <path d="M14.5 12l3.608-3.608c.563-.563.867-1.312.867-2.11s-.304-1.547-.867-2.11L14.5 12z"/>
-                <path d="M20.392 10.172l-2.685-1.54L14.5 12l3.207 3.368 2.685-1.54c.789-.453 1.289-1.312 1.289-2.328s-.5-1.875-1.289-2.328z"/>
-                <path d="M3.609 1.814l10.891 10.186L17.707 8.632 3.61 22.186l10.89-10.186L17.707 15.368z"/>
+              <svg className="w-8 h-8 mr-3 group-hover:rotate-12 transition-transform duration-300" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
               </svg>
               <div className="text-left">
-                <div className="text-xs">Get it on</div>
-                <div className="text-sm font-semibold">Google Play</div>
+                <div className="text-xs opacity-90">Get it on</div>
+                <div className="text-lg font-semibold">Google Play</div>
               </div>
             </a>
+          </div>
+          
+          {/* Decorative elements */}
+          <div className="flex justify-center mt-6 space-x-2">
+            <div className="w-2 h-2 bg-red-500 rounded-full animate-bounce"></div>
+            <div className="w-2 h-2 bg-yellow-500 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+            <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0.3s' }}></div>
           </div>
         </div>
 
